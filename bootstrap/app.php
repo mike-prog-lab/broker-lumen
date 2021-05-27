@@ -27,6 +27,10 @@ $app = new Laravel\Lumen\Application(
 
 $app->withEloquent();
 
+if ($app->environment() === 'local') {
+    $app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+}
+
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings

@@ -1,6 +1,8 @@
 <?php
 
-/** @var \Laravel\Lumen\Routing\Router $router */
+use Laravel\Lumen\Routing\Router;
+
+/** @var Router $router */
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,7 @@
 $router->group([
     'middleware' => 'auth',
 ], function () use ($router) {
-    $router->get('/', function (\Illuminate\Http\Request $request) use ($router) {
+    $router->post('/', function (\Illuminate\Http\Request $request) use ($router) {
         return $router->app->version();
     });
 });

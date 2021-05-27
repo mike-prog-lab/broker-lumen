@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Exceptions\Repository\ModelNotFoundException;
 use App\Repositories\Outer\UserRepository;
+use App\Representation\User;
 
 /**
  * Class UserService
@@ -30,8 +31,8 @@ final class UserService
     /**
      * @throws ModelNotFoundException
      */
-    public function getUser(string $token): array
+    public function getUser(string $token): User
     {
-        return $this->repository->getUser($token);
+        return new User($this->repository->getUser($token));
     }
 }
