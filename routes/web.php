@@ -18,7 +18,13 @@ use Laravel\Lumen\Routing\Router;
 $router->group([
     'middleware' => 'auth',
 ], function () use ($router) {
-    $router->post('/', function (\Illuminate\Http\Request $request) use ($router) {
-        return $router->app->version();
+    $router->group([
+        'prefix' => 'projects',
+    ], function () use ($router) {
+        $router->get('/', 'Project\ProjectController@list');
+        $router->post('/', 'Project\ProjectController@create');
+        $router->get('/{id}', 'Project\ProjectController@index');
+        $router->patch('/{id}', 'Project\ProjectController@update');
+        $router->delete('/{id}', 'Project\ProjectController@delete');
     });
 });

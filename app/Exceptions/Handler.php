@@ -10,6 +10,7 @@ use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -54,6 +55,10 @@ class Handler extends ExceptionHandler
     {
         if ($exception->getCode() === 404) {
             return \response('Not found', 404);
+        }
+
+        if ($exception instanceof MethodNotAllowedHttpException) {
+            return \response()->json('Method not allowed', 405);
         }
 
         return parent::render($request, $exception);

@@ -9,6 +9,7 @@
         "ext-json": "*",
         "anik/form-request": "^4.2",
         "guzzlehttp/guzzle": "^7.3",
+        "krazydanny/laravel-repository": "^1.2",
         "laravel/lumen-framework": "^8.0"
     },
     "require-dev": {

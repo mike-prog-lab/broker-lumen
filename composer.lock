@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "35643654efe1285334488f15cb004edc",
+    "content-hash": "3158c7515620797ee958be802a41e8d5",
     "packages": [
         {
             "name": "anik/form-request",
@@ -2144,6 +2144,43 @@
                 "source": "https://github.com/laravel/framework"
             },
             "time": "2021-05-18T12:49:19+00:00"
+        },
+        {
+            "name": "krazydanny/laravel-repository",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/krazydanny/laravel-repository.git",
+                "reference": "835d10a83301e1bebc0b3be51c80b2808303570e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/krazydanny/laravel-repository/zipball/835d10a83301e1bebc0b3be51c80b2808303570e",
+                "reference": "835d10a83301e1bebc0b3be51c80b2808303570e",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "KrazyDanny\\Laravel\\Repository\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Spadafora",
+                    "email": "danielspadafora@gmail.com"
+                }
+            ],
+            "description": "An abstraction layer for easily implementing industry-standard caching strategies to Eloquent models.",
+            "support": {
+                "issues": "https://github.com/krazydanny/laravel-repository/issues",
+                "source": "https://github.com/krazydanny/laravel-repository/tree/v1.2.0"
+            },
+            "time": "2021-02-19T20:50:03+00:00"
         },
         {
             "name": "laravel/lumen-framework",

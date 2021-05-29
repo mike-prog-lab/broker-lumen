@@ -4,7 +4,7 @@ namespace App\Http\Requests\Project;
 
 use Anik\Form\FormRequest;
 
-class ProjectCreateRequest extends FormRequest
+class ProjectUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class ProjectCreateRequest extends FormRequest
     protected function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'min:2', 'max:50'],
+            'title' => ['sometimes', 'string', 'min:2', 'max:50'],
             'description' => ['sometimes', 'nullable', 'string', 'max:255'],
         ];
     }
