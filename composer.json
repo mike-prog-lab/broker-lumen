@@ -6,9 +6,11 @@
     "type": "project",
     "require": {
         "php": "^7.4",
+        "ext-json": "*",
+        "anik/form-request": "^4.2",
         "guzzlehttp/guzzle": "^7.3",
-        "laravel/lumen-framework": "^8.0",
-        "ext-json": "*"
+        "krazydanny/laravel-repository": "^1.2",
+        "laravel/lumen-framework": "^8.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

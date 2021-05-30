@@ -1,6 +1,8 @@
 <?php
 
-/** @var \Laravel\Lumen\Routing\Router $router */
+use Laravel\Lumen\Routing\Router;
+
+/** @var Router $router */
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,31 @@
 $router->group([
     'middleware' => 'auth',
 ], function () use ($router) {
-    $router->get('/', function (\Illuminate\Http\Request $request) use ($router) {
-        return $router->app->version();
+    /**
+     * Projects CRUD
+     */
+    $router->group([
+        'prefix' => 'projects',
+        'namespace' => 'Project'
+    ], function () use ($router) {
+        $router->get('/', 'ProjectController@list');
+        $router->post('/', 'ProjectController@create');
+        $router->get('/{id}', 'ProjectController@index');
+        $router->patch('/{id}', 'ProjectController@update');
+        $router->delete('/{id}', 'ProjectController@delete');
+
+        /**
+         * Tasks CRUD
+         */
+        $router->group([
+            'prefix' => '{projectId}/tasks',
+            'namespace' => 'Task'
+        ], function () use ($router) {
+            $router->get('/', 'ProjectTaskController@list');
+            $router->post('/', 'ProjectTaskController@create');
+            $router->get('/{id}', 'ProjectTaskController@index');
+            $router->patch('/{id}', 'ProjectTaskController@update');
+            $router->delete('/{id}', 'ProjectTaskController@delete');
+        });
     });
 });
