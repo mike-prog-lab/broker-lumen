@@ -35,4 +35,12 @@ final class UserService
     {
         return new User($this->repository->getUser($token));
     }
+
+    /**
+     * @throws \Exception
+     */
+    public function isIdValid(int $userId): bool
+    {
+        return $this->repository->isValidId($userId);
+    }
 }

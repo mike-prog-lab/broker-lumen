@@ -36,8 +36,7 @@ class ProjectTask extends Model
         'title',
         'description',
         'project_id',
-        'project_status_id',
-        'project_status_id',
+        'project_task_status_id',
         'author_id',
         'assignee_id',
     ];

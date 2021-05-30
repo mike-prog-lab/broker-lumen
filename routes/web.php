@@ -18,13 +18,31 @@ use Laravel\Lumen\Routing\Router;
 $router->group([
     'middleware' => 'auth',
 ], function () use ($router) {
+    /**
+     * Projects CRUD
+     */
     $router->group([
         'prefix' => 'projects',
+        'namespace' => 'Project'
     ], function () use ($router) {
-        $router->get('/', 'Project\ProjectController@list');
-        $router->post('/', 'Project\ProjectController@create');
-        $router->get('/{id}', 'Project\ProjectController@index');
-        $router->patch('/{id}', 'Project\ProjectController@update');
-        $router->delete('/{id}', 'Project\ProjectController@delete');
+        $router->get('/', 'ProjectController@list');
+        $router->post('/', 'ProjectController@create');
+        $router->get('/{id}', 'ProjectController@index');
+        $router->patch('/{id}', 'ProjectController@update');
+        $router->delete('/{id}', 'ProjectController@delete');
+
+        /**
+         * Tasks CRUD
+         */
+        $router->group([
+            'prefix' => '{projectId}/tasks',
+            'namespace' => 'Task'
+        ], function () use ($router) {
+            $router->get('/', 'ProjectTaskController@list');
+            $router->post('/', 'ProjectTaskController@create');
+            $router->get('/{id}', 'ProjectTaskController@index');
+            $router->patch('/{id}', 'ProjectTaskController@update');
+            $router->delete('/{id}', 'ProjectTaskController@delete');
+        });
     });
 });

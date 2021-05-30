@@ -65,10 +65,10 @@ abstract class Repository extends BaseRepository
 
     /**
      * @param \Illuminate\Database\Query\Builder $query
-     * @return false|string
+     * @return string
      */
-    private function hashQuery(\Illuminate\Database\Query\Builder $query)
+    private function hashQuery(\Illuminate\Database\Query\Builder $query): string
     {
-        return hash('sha1', \Opis\Closure\serialize($query));
+        return md5($query->getConnection()->getDatabaseName() . $query->toSql() . serialize($query->bindings));
     }
 }

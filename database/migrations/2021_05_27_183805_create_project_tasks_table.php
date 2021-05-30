@@ -20,7 +20,7 @@ class CreateProjectTasksTable extends Migration
             $table->foreignIdFor(\App\Models\Project::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\ProjectTaskStatus::class)->constrained();
             $table->bigInteger('author_id')->unsigned()->index('author_id');
-            $table->bigInteger('assignee_id')->unsigned()->index('assignee_id');
+            $table->bigInteger('assignee_id')->nullable()->unsigned()->index('assignee_id');
             $table->timestamps();
         });
     }

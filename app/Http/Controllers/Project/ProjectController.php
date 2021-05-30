@@ -95,10 +95,7 @@ final class ProjectController extends Controller
                 return $this->responseWithError('Project not found.', 404);
             }
 
-            $this->service->update($project, $request->only([
-                'title',
-                'description',
-            ]));
+            $this->service->update($project, $request->validated());
 
             return $this->responseWithEntity($project);
         } catch (\Throwable $exception) {

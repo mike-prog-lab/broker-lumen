@@ -17,6 +17,6 @@ class ProjectRepository extends Repository
      */
     public function __construct()
     {
-        parent::__construct(Project::class);
+        parent::__construct(Project::class, 'Projects');
     }
 }
