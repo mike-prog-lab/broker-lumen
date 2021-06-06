@@ -25,4 +25,20 @@ abstract class OuterRepository
         $this->client = $client;
         $this->root = $root;
     }
+
+    /**
+     * @param bool $secure
+     */
+    public function setSecure(bool $secure): void
+    {
+        $this->secure = $secure;
+    }
+
+    /**
+     * @param int $port
+     */
+    public function setPort(int $port): void
+    {
+        $this->port = $port;
+    }
 }

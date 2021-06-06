@@ -16,7 +16,12 @@ class UserServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(UserRepository::class, function () {
-            return new UserRepository(env('AUTH_ROOT'), $this->app->make(ClientInterface::class));
+            $repo = new UserRepository(env('AUTH_ROOT'), $this->app->make(ClientInterface::class));
+
+            $repo->setSecure(env('AUTH_SECURE', true));
+            $repo->setPort(env('AUTH_PORT', 443));
+
+            return $repo;
         });
 
         $this->app->bind(UserService::class, function () {

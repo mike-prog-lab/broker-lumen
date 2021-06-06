@@ -23,6 +23,14 @@ trait Fetchable
      * @var ClientInterface
      */
     protected ClientInterface $client;
+    /**
+     * @var bool
+     */
+    protected bool $secure = true;
+    /**
+     * @var int
+     */
+    protected int $port = 443;
 
     /**
      * @return string
@@ -30,6 +38,14 @@ trait Fetchable
     public function getRoot(): string
     {
         return $this->root;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSchema(): string
+    {
+        return $this->secure ? 'https://' : 'http://';
     }
 
     /**
@@ -41,7 +57,7 @@ trait Fetchable
      */
     protected function fetch(string $endpoint, string $method = 'GET', array $headers = []): ResponseInterface
     {
-        return $this->client->request($method, $this->constructUrl($this->root, $endpoint), [
+        return $this->client->request($method, $this->constructUrl($this->getSchema(), $this->root .':'. $this->port, $endpoint), [
             'headers' => $headers,
         ]);
     }
