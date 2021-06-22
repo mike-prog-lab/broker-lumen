@@ -29,6 +29,7 @@ $app->withEloquent();
 
 if ($app->environment() === 'local') {
     $app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+    $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 }
 
 /*
@@ -99,7 +100,6 @@ $app->configure('app');
  $app->register(App\Providers\AuthServiceProvider::class);
  $app->register(\App\Providers\UserServiceProvider::class);
  $app->register(\Anik\Form\FormRequestServiceProvider::class);
- $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
  $app->register(\App\Providers\RuleServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
