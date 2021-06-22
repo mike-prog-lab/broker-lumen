@@ -21,7 +21,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: docker.pkg.github.com
-          username: ${{ github.repository_owner }}
+          username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - id: docker-build-push
         name: Docker Build and Push
@@ -31,5 +31,5 @@ jobs:
           context: .
           file: ./Dockerfile
           tags: |
-            docker.pkg.github.com/${{ env.IMAGE_REPOSITORY }}/tl-php-fpm:${{ steps.docker-tag.outputs.tag }}
-            docker.pkg.github.com/${{ env.IMAGE_REPOSITORY }}/tl-php-fpm:development
+            ghcr.io/${{ env.IMAGE_REPOSITORY }}/tl-php-fpm:${{ steps.docker-tag.outputs.tag }}
+            ghcr.io/${{ env.IMAGE_REPOSITORY }}/tl-php-fpm:development
